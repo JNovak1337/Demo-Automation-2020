@@ -22,13 +22,13 @@ namespace DemoT
             driver.Manage().Window.Maximize();
             driver.Url = "http://demo.automationtesting.in/WebTable.html";
 
-            BasePage WebTable = new BasePage(driver);
+            RegistrationPage webtable = new RegistrationPage(driver);
 
             #region WebTable Steps
 
-            WebTable.EditInfo();
-            WebTable.EditChange();
-            WebTable.DeleteButton();
+            webtable.EditInfo();
+            webtable.EditChange();
+            webtable.DeleteButton();
 
 
             #endregion

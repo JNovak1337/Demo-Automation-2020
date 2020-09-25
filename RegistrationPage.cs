@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace DemoT
 {
 
-    public class BasePage
+    public class RegistrationPage
     {
         IWebDriver webdriver;
 
@@ -42,7 +42,7 @@ namespace DemoT
         By RefreshButtonClick = By.XPath("/html[1]/body[1]/section[1]/div[1]/div[1]/div[2]/form[1]/div[14]/div[1]/button[2]");
 
 
-        public BasePage(IWebDriver driver)
+        public RegistrationPage(IWebDriver driver)
         {
             this.webdriver = driver;
         }
