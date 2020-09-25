@@ -11,36 +11,38 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
 
 namespace Tests
 {
     [TestFixture]
     public class Test2
     {
-        public IWebDriver driver;
+        IWebDriver driver = new ChromeDriver();
+
+        [SetUp]
+        public void Initialize()
+        {
+            driver.Navigate().GoToUrl("http://demo.automationtesting.in/Alerts.html");
+            driver.Manage().Window.Maximize();
+        }
+
         [Test, Category("AlertPage")]
 
         public void AlertDefaultFirst()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Url = "http://demo.automationtesting.in/Alerts.html";
             AlertPage alertdo = new AlertPage(driver);
 
             alertdo.AlertWithOkayChoose();
             alertdo.DisplayAlertButtonClick();
             IAlert alert = driver.SwitchTo().Alert();
             alert.Accept();
-            driver.Close();
-
         }
+
         [Test, Category("AlertPage")]
 
         public void AlertOkOrCancelPressOk()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Url = "http://demo.automationtesting.in/Alerts.html";
             AlertPage alertdo = new AlertPage(driver);
 
             alertdo.AlertWithOkayAndCancelChoose();
@@ -52,22 +54,16 @@ namespace Tests
             try
             {
                 Assert.IsTrue(AlertResponse.Text.Contains("You pressed Ok"));
-                Debug.Write("You pressed Ok - is Displayed");
             }
-            catch (Exception except)
+            catch
             {
-                Debug.Write(except);
                 throw;
             }
-            Thread.Sleep(2500);
-            driver.Close();
         }
+
         [Test, Category("AlertPage")]
         public void AlertOkOrCancelPressCancel()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Url = "http://demo.automationtesting.in/Alerts.html";
             AlertPage alertdo = new AlertPage(driver);
 
             alertdo.AlertWithOkayAndCancelChoose();
@@ -79,24 +75,17 @@ namespace Tests
             try
             {
                 Assert.IsTrue(AlertResponse.Text.Contains("You Pressed Cancel"));
-                Debug.Write("You Pressed Cancel - is Displayed");
             }
-            catch (Exception except)
+            catch
             {
-                Debug.Write(except);
                 throw;
             }
-            Thread.Sleep(2500);
-            driver.Close();
         }
 
         [Test, Category("AlertPage")]
 
         public void AlertWithTextBox()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Url = "http://demo.automationtesting.in/Alerts.html";
             AlertPage alertdo = new AlertPage(driver);
 
             alertdo.AlertWithTextBoxChoose();
@@ -109,78 +98,56 @@ namespace Tests
             try
             {
                 Assert.IsTrue(AlertResponse.Text.Contains("Hello Testing Alert Box How are you today"));
-                Debug.Write("Your custom text in Alert Box was correctly displayed.");
             }
-            catch (Exception except)
+            catch
             {
-                Debug.Write(except);
                 throw;
             }
-            Thread.Sleep(2500);
             driver.Close();
         }
 
         [Test, Category("AlertPage")]
         public void VerifyAlertWithOkayButton()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Url = "http://demo.automationtesting.in/Alerts.html";
-
             try
             {
                 Assert.IsTrue(driver.FindElement(By.XPath("//div[@class='container center']//li[1]//a[1]")).Displayed);
-                Debug.Write("Alert with OK - is Displayed");
             }
-            catch (Exception except)
+            catch
             {
-                Debug.Write(except);
                 throw;
             }
-
-            Thread.Sleep(4500);
-            driver.Close();
         }
+
         [Test, Category("AlertPage")]
         public void VerifyAlertWithOkayAndCancelButton()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Url = "http://demo.automationtesting.in/Alerts.html";
-
             try
             {
                 Assert.IsTrue(driver.FindElement(By.XPath("//div[@class='container center']//li[2]//a[1]")).Displayed);
-                Debug.Write("Alert with OK & Cancel - is Displayed");
             }
-            catch (Exception except)
+            catch
             {
-                Debug.Write(except);
                 throw;
             }
-
-            Thread.Sleep(4500);
-            driver.Close();
         }
+
         [Test, Category("AlertPage")]
         public void VerifyAlertWithTextboxButton()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Url = "http://demo.automationtesting.in/Alerts.html";
-
             try
             {
                 Assert.IsTrue(driver.FindElement(By.XPath("//button[@class='btn btn-info']")).Displayed);
-                Debug.Write("Alert with OK - is Displayed");
             }
-            catch (Exception except)
+            catch
             {
-                Debug.Write(except);
                 throw;
             }
+        }
 
-            Thread.Sleep(4500);
+        [TearDown]
+        public void CleanUp()
+        {
             driver.Close();
         }
     }

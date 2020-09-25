@@ -16,8 +16,6 @@ namespace DemoT
     {
         IWebDriver webdriver;
 
-        #region Alert
-
         By AlertWithOkayBox = By.XPath("//li[@class='active']//a[@class='analystic']");
         By DisplayAnAlertButton = By.XPath("//button[@class='btn btn-danger']");
         By AlertWithOkayAndCancel = By.XPath("//div[@class='container center']//li[2]//a[1]");
@@ -54,8 +52,6 @@ namespace DemoT
         {
             webdriver.FindElement(DisplayThePromptBox).Click();
         }
-
-        #endregion
     }
 }
 

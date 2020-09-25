@@ -60,10 +60,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlertPage.cs" />
-    <Compile Include="RegistrationPage.cs" />
+    <Compile Include="Pages\SelectablePage.cs" />
+    <Compile Include="Pages\AlertPage.cs" />
+    <Compile Include="Pages\RegistrationPage.cs" />
     <Compile Include="Tests\AlertPageTest.cs" />
-    <Compile Include="Tests\WebTable.cs" />
+    <Compile Include="Tests\SelectableTest.cs" />
     <Compile Include="Tests\RegistrationPageTest.cs" />
   </ItemGroup>
   <ItemGroup>

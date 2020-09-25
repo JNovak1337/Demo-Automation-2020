@@ -16,8 +16,6 @@ namespace DemoT
     {
         IWebDriver webdriver;
 
-        #region Registration
-
         By FirstNameBox = By.XPath("//input[@placeholder='First Name']");
         By LastNameBox = By.XPath("//input[@placeholder='Last Name']");
         By AddressBox = By.XPath("//html//body//section//div//div//div//form//div//div//textarea");
@@ -135,32 +133,6 @@ namespace DemoT
         {
             webdriver.FindElement(RefreshButtonClick).Click();
         }
-
-        #endregion
-
-        #region WebTable
-
-        By EditWebTable = By.XPath("//body/section/div/div/div/div/div/div/div/div[1]/div[1]/div[6]/user-click-select[1]/div[1]/button[1]']");
-        By EditChangeInfo = By.XPath("//body//div//div//div//div//div//div//div//div[1]//div[1]//div[6]//user-click-select[1]//div[1]//del-click[1]//button[1]");
-        By DeleteButtonClick = By.XPath("//body//div//div//div//div//div//div//div//div[1]//div[1]//div[6]//user-click-select[1]//div[1]//div[1]//ul[1]//li[1]//button[1]");
-
-        public void EditInfo()
-        {
-            webdriver.FindElement(EditWebTable).Click();
-        }
-        public void EditChange()
-        {
-            webdriver.FindElement(EditChangeInfo).Click();
-        }
-        public void DeleteButton()
-        {
-            webdriver.FindElement(DeleteButtonClick).Click();
-        }
-        #endregion
-
-        #region SwitchTo
-
-        #endregion
     }
 }
 
